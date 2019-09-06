@@ -6,3 +6,11 @@ from selenium.common.exceptions import TimeoutException
 
 from bs4 import BeautifulSoup
 import urllib.request
+
+class CraigslistScraper(object):
+  def __init__(self, location, postal, max_price, radius):
+    self.location = location
+    self.postal = postal
+    self.max_price = max_price
+    self.radius = radius
+
