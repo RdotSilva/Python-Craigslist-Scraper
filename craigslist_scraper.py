@@ -17,11 +17,20 @@ class CraigslistScraper(object):
     self.url = f"https://{location}.craigslist.org/search/sss?&sort=date&search_distance={radius}&postal={postal}&max_price={max_price}"
     
     self.driver = webdriver.Firefox()
+    
+    # Set delay higher if you get timeout exception below
+    self.delay = 3
 
     # Use load url with webdriver
     def load_craigslist_url(self):
       self.driver.get(self.url)
-      
+      try:
+        wait = WebDriverWait(self.driver, self.delay)
+        # Wait until the form with id of searchform is loaded
+        wait.until(EC.presence_of_element_located((By.ID, "searchform")))
+        print("Page is ready")
+      except TimeoutException:
+        print("Loading took too much time")
 
 location = "providence"
 postal = "02904"
