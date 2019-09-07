@@ -38,10 +38,12 @@ class CraigslistScraper(object):
     # Give list of selenium objects with class name of result-row
     all_posts = self.driver.find_elements_by_class_name("result-row")
 
+    # Each piece of data will be stored inside of the appropriate array
     dates = []
     titles = []
     prices = []
 
+    # Logic to split up each post and gather title, price, date
     for post in all_posts:
       title = post.text.split("$")
       
@@ -53,17 +55,15 @@ class CraigslistScraper(object):
       title = title.split("\n")
       price = title[0]
       title = title[-1]
-
       title = title.split(" ")
-
       month = title[0]
       day = title[1]
-
       title = ' '.join(title[2:])
       date = month + " " + day
-      # print("PRICE: " + price)
-      # print("TITLE: " + title)
-      # print("DATE: " + date)
+
+      print("PRICE: " + price)
+      print("TITLE: " + title)
+      print("DATE: " + date)
 
       titles.append(title)
       prices.append(price)
@@ -88,16 +88,20 @@ class CraigslistScraper(object):
   def quit(self):
     self.driver.close()
 
+# Replace these variables with your own
+query = "QUERY"
+location = "LOCATION"
+postal = "ZIPCODE"
+max_price = "PRICE"
+radius = "MILES"
 
-  
-location = "providence"
-postal = "02904"
-max_price = "200"
-radius = "50"
+# Create new new instance of class
+scraper = CraigslistScraper(query, location, postal, max_price, radius)
 
-scraper = CraigslistScraper(lesco, location, postal, max_price, radius)
+# Call the load url method
 scraper.load_craigslist_url()
+
+# Gives access to each data array if needed
 titles, prices, dates = scraper.extract_post_information()
-print(titles)
-# scraper.extract_post_urls()
-# scraper.quit()
+
+scraper.quit()
