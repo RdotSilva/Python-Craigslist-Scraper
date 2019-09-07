@@ -34,8 +34,14 @@ class CraigslistScraper(object):
   
   def extract_post_titles(self):
     # Give list of selenium objects with class name of result-row
-    all_posts = self.driver.find_element_by_class_name("result-row")
-    print(all_posts)
+    all_posts = self.driver.find_elements_by_class_name("result-row")
+    post_title_list = []
+
+    for post in all_posts:
+      print(post.text)
+      post_title_list.append(post.text)
+    return post_title_list
+
 
   
 location = "providence"
