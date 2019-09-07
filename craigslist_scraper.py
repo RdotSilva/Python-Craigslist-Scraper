@@ -18,6 +18,11 @@ class CraigslistScraper(object):
     
     self.driver = webdriver.Firefox()
 
+    # Use load url with webdriver
+    def load_craigslist_url(self):
+      self.driver.get(self.url)
+      
+
 location = "providence"
 postal = "02904"
 max_price = "200"
