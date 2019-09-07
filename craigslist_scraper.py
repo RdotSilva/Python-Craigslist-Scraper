@@ -53,6 +53,10 @@ class CraigslistScraper(object):
       url_list.append(link["href"])
     return url_list
 
+  # Close driver
+  def quit(self):
+    self.driver.close()
+
 
   
 location = "providence"
@@ -62,5 +66,6 @@ radius = "50"
 
 scraper = CraigslistScraper(location, postal, max_price, radius)
 scraper.load_craigslist_url()
-# scraper.extract_post_titles()
+scraper.extract_post_titles()
 scraper.extract_post_urls()
+scraper.quit()
