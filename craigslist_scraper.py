@@ -42,6 +42,13 @@ class CraigslistScraper(object):
       post_title_list.append(post.text)
     return post_title_list
 
+  def extract_post_urls(self):
+    url_list = []
+    html_page = urllib.request.urlopen(self.url)
+    soup = BeautifulSoup(html_page)
+
+    
+
 
   
 location = "providence"
@@ -51,4 +58,5 @@ radius = "50"
 
 scraper = CraigslistScraper(location, postal, max_price, radius)
 scraper.load_craigslist_url()
-scraper.extract_post_titles()
+# scraper.extract_post_titles()
+scraper.extract_post_urls()
