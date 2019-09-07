@@ -1,6 +1,6 @@
 # Python Craigslist Scraper
 
-Python Scraper for Craigslist. Allows you to scrape craigslist search and produce the title, price, date, and url link of each post.
+Python Scraper for Craigslist. Allows you to scrape craigslist search and produce the title, price, date, and url link of each post. This is a basic implementation and only shows a fraction of what can be done.
 
 ## Requirements
 
@@ -34,7 +34,8 @@ python craigslist_scraper.py
 
 ## Screenshots
 
-Coming soon...
+![Post Data](https://i.imgur.com/mwQZLhf.png "Post Data")
+![Post URL List](https://i.imgur.com/hN0l1wU.png "Post URL List")
 
 ## Built With
 
