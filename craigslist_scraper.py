@@ -47,7 +47,11 @@ class CraigslistScraper(object):
     html_page = urllib.request.urlopen(self.url)
     soup = BeautifulSoup(html_page)
 
-    
+    # Find all a tags with class of result-title hdrlnk
+    for link in soup.findAll("a", {"class": "result-title hdrlnk"}):
+      print(link["href"])
+      url_list.append(link["href"])
+    return url_list
 
 
   
