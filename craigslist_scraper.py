@@ -21,7 +21,7 @@ class CraigslistScraper(object):
     # Set delay higher if you get timeout exception below
     self.delay = 3
 
-    # Use load url with webdriver
+  # Use load url with webdriver
   def load_craigslist_url(self):
     self.driver.get(self.url)
     try:
@@ -32,6 +32,7 @@ class CraigslistScraper(object):
     except TimeoutException:
       print("Loading took too much time")
   
+  # Extracts date, title, and price of each Craigslist post
   def extract_post_information(self):
     # Give list of selenium objects with class name of result-row
     all_posts = self.driver.find_elements_by_class_name("result-row")
@@ -70,6 +71,7 @@ class CraigslistScraper(object):
     return titles, prices, dates
       
 
+  # Extract the urls from each individual post
   def extract_post_urls(self):
     url_list = []
     html_page = urllib.request.urlopen(self.url)
