@@ -15,3 +15,12 @@ class CraigslistScraper(object):
     self.radius = radius
 
     self.url = f"https://{location}.craigslist.org/search/sss?&sort=date&search_distance={radius}&postal={postal}&max_price={max_price}"
+
+
+location = "providence"
+postal = "02904"
+max_price = "200"
+radius = "50"
+
+scraper = CraigslistScraper(location, postal, max_price, radius)
+
