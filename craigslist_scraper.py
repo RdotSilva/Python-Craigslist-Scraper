@@ -8,13 +8,14 @@ from bs4 import BeautifulSoup
 import urllib.request
 
 class CraigslistScraper(object):
-  def __init__(self, location, postal, max_price, radius):
+  def __init__(self, query, location, postal, max_price, radius):
+    self.query = query
     self.location = location
     self.postal = postal
     self.max_price = max_price
     self.radius = radius
 
-    self.url = f"https://{location}.craigslist.org/search/sss?&sort=date&search_distance={radius}&postal={postal}&max_price={max_price}"
+    self.url = f"https://{location}.craigslist.org/search/sss?&sort=date&search_distance={radius}&postal={postal}&query={query}&max_price={max_price}"
     
     self.driver = webdriver.Firefox()
 
@@ -94,7 +95,7 @@ postal = "02904"
 max_price = "200"
 radius = "50"
 
-scraper = CraigslistScraper(location, postal, max_price, radius)
+scraper = CraigslistScraper(lesco, location, postal, max_price, radius)
 scraper.load_craigslist_url()
 titles, prices, dates = scraper.extract_post_information()
 print(titles)
